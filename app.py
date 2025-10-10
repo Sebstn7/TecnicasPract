@@ -1,10 +1,19 @@
 import dash
 from dash import html, dcc
 
-app = dash.Dash(__name__, use_pages=True)
+app = dash.Dash(
+    __name__, 
+    use_pages=True
+)
 
 app.layout = html.Div([
+    html.Link(
+        rel='stylesheet',
+        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+    ),
+    
     html.H1("Técnicas de Modelamiento Matemático", className='app-header'),
+    
     html.Div([
         html.Div([
             html.Div(
@@ -12,6 +21,7 @@ app.layout = html.Div([
             ) for page in dash.page_registry.values()
         ], className='nav-links')
     ], className='navigation'),
+    
     dash.page_container
 ], className='app-container')
 

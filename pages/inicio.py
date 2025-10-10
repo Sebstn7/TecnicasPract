@@ -1,110 +1,120 @@
 import dash
 from dash import html, dcc
-import plotly.graph_objects as go
-import numpy as np
-
-##################################################
-
-P0 = 100  # Población inicial
-r = 0.03  # Tasa de crecimiento
-t = np.linspace(0, 100, 10)  # Tiempo
-P = P0 * np.exp(r * t)  # Función de crecimiento exponencial
-
-# Crear un scatter plot
-trace = go.Scatter(
-    x=t,
-    y=P,
-    mode='lines+markers',
-    line=dict(
-        dash='dot',
-        color='black',
-        width=2
-    ),
-    marker=dict(
-        color='blue',
-        symbol='square',
-        size=8
-    ),
-    name='P(t) = P0 * e^(rt)',
-    hovertemplate='t: %{x:.2f}<br>P(t): %{y:.2f}<extra></extra>'
-)
-
-# Crear la figura
-fig = go.Figure(data=trace)
-
-fig.update_layout(
-    title=dict(
-        text='<b>Crecimiento de la población</b>',
-        font=dict(
-            size=20,
-            color='green'
-        ),
-        x=0.5,
-        y=0.93
-    ),
-    xaxis_title='Tiempo (t)',
-    yaxis_title='Población P(t)',
-    margin=dict(l=40, r=40, t=50, b=40),
-    paper_bgcolor='lightblue',
-    plot_bgcolor='white',
-    font=dict(
-        family='Outfit',
-        size=11,
-        color='black'
-    )
-)
-
-fig.update_xaxes(
-    showgrid=True, gridwidth=1, gridcolor='lightpink',
-    zeroline=True, zerolinewidth=2, zerolinecolor='red',
-    showline=True, linecolor='black', linewidth=2, mirror=True,
-)
-
-fig.update_yaxes(
-    showgrid=True, gridwidth=1, gridcolor='lightpink',
-    zeroline=True, zerolinewidth=2, zerolinecolor='red',
-    showline=True, linecolor='black', linewidth=2, mirror=True,
-)
-
-##################################################
 
 dash.register_page(__name__, path='/', name='Inicio')
 
-layout = html.Div(children=[
-    # Contendedor izquierdo
-    html.Div(children=[
-        html.H2("Crecimiento de la población y capacidad de carga", className="title"),
-
-        dcc.Markdown("""
-        Para modelar el crecimiento de la población mediante una ecuación diferencial, primero 
-        tenemos que introducir algunas variables y términos relevantes. La variable $t$.
-        representará el tiempo. Las unidades de tiempo pueden ser horas, días, semanas, 
-        meses o incluso años. Cualquier problema dado debe especificar las unidades utilizadas 
-        en ese problema en particular. La variable $P$
-        representará a la población. Como la población varía con el tiempo, se entiende que es 
-        una función del tiempo. Por lo tanto, utilizamos la notación $P(t)$
-        para la población en función del tiempo. Si $P(t)$
-        es una función diferenciable, entonces la primera derivada $\\dfrac{dP}{dt}$
-        representa la tasa instantánea de cambio de la población en función del tiempo.
-        """, mathjax=True),
-
-        dcc.Markdown("""
-        Un ejemplo de función de crecimiento exponencial es  $P(t)=P_0e^{rt}$.
-        En esta función,  $P(t)$
-        representa la población en el momento  $t$, $P_0$
-        representa la población inicial (población en el tiempo  $t=0$),
-        y la constante  $r>0$
-        se denomina tasa de crecimiento. Aquí  $P_0=100$ y  $r=0,03$.
-    """, mathjax=True),
-    ], className="content left"),
-
-    # Contendor derecho
-    html.Div(children=[
-        html.H2("Gráfica", className="title"),
-
-        dcc.Graph(
-            figure=fig,
-            style={'height': '350px', 'width': '100%'},
-        )
-    ], className="content right")
-], className="page-container")
+layout = html.Div([
+    html.Div([
+        html.H1("Sebastián Porras", style={
+            'textAlign': 'center', 
+            'color': '#1e3a5f',
+            'marginBottom': '10px',
+            'fontFamily': 'Arial, sans-serif',
+            'fontSize': '2.5em'
+        }),
+        html.Hr(style={'width': '80px', 'margin': '20px auto', 'border': '2px solid #2c5aa0'}),
+        html.P("Estudiante de Computación Científica", style={
+            'textAlign': 'center',
+            'color': '#5d6d7e',
+            'fontSize': '20px',
+            'marginBottom': '40px',
+            'fontWeight': '300'
+        })
+    ], style={'padding': '60px 20px', 'backgroundColor': '#f8f6f0'}),
+    
+    html.Div([
+        html.Div([
+            html.H2([
+                html.I(className="fas fa-tools", style={'marginRight': '10px', 'color': '#1e3a5f'}),
+                "Habilidades Técnicas"
+            ], style={
+                'color': '#1e3a5f', 
+                'borderBottom': '2px solid #2c5aa0',
+                'paddingBottom': '10px',
+                'display': 'flex',
+                'alignItems': 'center'
+            }),
+            
+            html.Div([
+                html.H3([
+                    html.I(className="fas fa-code", style={'marginRight': '10px', 'color': '#2c5aa0'}),
+                    "Lenguajes de Programación"
+                ], style={'color': '#2c3e50', 'marginTop': '25px', 'display': 'flex', 'alignItems': 'center'}),
+                html.Ul([
+                    html.Li([html.I(className="fab fa-python", style={'marginRight': '8px', 'color': '#2c5aa0'}), "Python"]),
+                    html.Li([html.I(className="fas fa-cube", style={'marginRight': '8px', 'color': '#1e3a5f'}), "C++ con OpenGL"]),
+                    html.Li([html.I(className="fas fa-database", style={'marginRight': '8px', 'color': '#2c5aa0'}), "SQL"]),
+                    html.Li([html.I(className="fab fa-js-square", style={'marginRight': '8px', 'color': '#2c5aa0'}), "JavaScript"]),
+                ], style={'color': '#34495e', 'lineHeight': '2.0', 'fontSize': '16px', 'listStyle': 'none', 'padding': '0'}),
+                
+                html.H3([
+                    html.I(className="fas fa-globe", style={'marginRight': '10px', 'color': '#2c5aa0'}),
+                    "Desarrollo Web"
+                ], style={'color': '#2c3e50', 'marginTop': '25px', 'display': 'flex', 'alignItems': 'center'}),
+                html.Ul([
+                    html.Li([html.I(className="fab fa-html5", style={'marginRight': '8px', 'color': '#1e3a5f'}), "HTML5"]),
+                    html.Li([html.I(className="fab fa-css3-alt", style={'marginRight': '8px', 'color': '#2c5aa0'}), "CSS3"]),
+                    html.Li([html.I(className="fas fa-chart-line", style={'marginRight': '8px', 'color': '#2c5aa0'}), "Dash Framework"]),
+                ], style={'color': '#34495e', 'lineHeight': '2.0', 'fontSize': '16px', 'listStyle': 'none', 'padding': '0'})
+            ])
+        ], style={'flex': '1', 'padding': '40px', 'backgroundColor': '#ffffff', 'borderRadius': '8px', 'boxShadow': '0 4px 12px rgba(30,58,95,0.1)'}),
+        
+        html.Div([
+            html.H2([
+                html.I(className="fas fa-envelope", style={'marginRight': '10px', 'color': '#2c5aa0'}),
+                "Contacto"
+            ], style={
+                'color': '#1e3a5f',
+                'borderBottom': '2px solid #2c5aa0',
+                'paddingBottom': '10px',
+                'display': 'flex',
+                'alignItems': 'center'
+            }),
+            
+            html.Div([
+                html.Div([
+                    html.I(className="fas fa-envelope", style={'marginRight': '10px', 'color': '#1e3a5f'}),
+                    html.Span("s3bastianporras@gmail.com")
+                ], style={'margin': '20px 0', 'fontSize': '16px', 'color': '#2c3e50', 'display': 'flex', 'alignItems': 'center'})
+            ]),
+            
+            html.H3([
+                html.I(className="fas fa-link", style={'marginRight': '10px', 'color': '#2c5aa0'}),
+                "Enlaces"
+            ], style={'color': '#1e3a5f', 'marginTop': '30px', 'marginBottom': '20px', 'display': 'flex', 'alignItems': 'center'}),
+            
+            html.Div([
+                html.A(
+                    [
+                        html.I(className="fab fa-github", style={'marginRight': '10px'}),
+                        html.Span("GitHub")
+                    ], 
+                    href="https://github.com/Sebstn7", 
+                    target="_blank",
+                    style={
+                        'display': 'flex', 
+                        'alignItems': 'center',
+                        'justifyContent': 'center',
+                        'padding': '12px 20px', 
+                        'margin': '10px 0', 
+                        'backgroundColor': '#1e3a5f', 
+                        'color': 'white', 
+                        'textDecoration': 'none', 
+                        'borderRadius': '5px',
+                        'fontWeight': '500'
+                    }
+                )
+            ])
+        ], style={'flex': '1', 'padding': '40px', 'backgroundColor': '#f0f4f8', 'borderRadius': '8px', 'marginLeft': '20px'})
+    ], style={
+        'display': 'flex', 
+        'maxWidth': '1200px', 
+        'margin': '0 auto', 
+        'padding': '40px 20px',
+        'gap': '30px'
+    })
+], style={
+    'fontFamily': 'Arial, sans-serif', 
+    'minHeight': '100vh',
+    'backgroundColor': '#ffffff'
+})

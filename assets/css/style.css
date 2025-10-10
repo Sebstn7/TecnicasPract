@@ -11,19 +11,19 @@ body {
 }
 .app-header {
     margin: 0;
-    background-color: blue;
+    background-color: #1E3A5F;
     padding: 10px;
     text-align: center;
     color: white;
 }
 .navigation {
-    background-color: blue;
+    background-color: #1E3A5F;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
 }
 .nav-link {
-    background-color: chartreuse;
+    background-color: rgb(255, 255, 255);
     padding: 2px 8px;
     border-radius: 5px;
 }

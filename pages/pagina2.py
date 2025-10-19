@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import numpy as np
 
 
-t = np.linspace(0, 50, 20)  # Reducido de 100 a 20 puntos
+t = np.linspace(0, 50, 20)  
 K = 1000
 P0 = 100
 r = 0.3
@@ -67,7 +67,7 @@ fig.update_yaxes(
 
 
 
-dash.register_page(__name__, path='/pagina2', name='Capacidad de Carga')
+dash.register_page(__name__, path='/pagina2', name='Pagina 2')
 
 layout = html.Div(children=[
     html.Div(children=[

@@ -3,14 +3,10 @@ from dash import html, dcc
 import plotly.graph_objects as go
 import numpy as np
 
-##################################################
-
-P0 = 100  # Población inicial
-r = 0.03  # Tasa de crecimiento
-t = np.linspace(0, 100, 10)  # Tiempo
-P = P0 * np.exp(r * t)  # Función de crecimiento exponencial
-
-# Crear un scatter plot
+P0 = 100 
+r = 0.03  
+t = np.linspace(0, 100, 10)  
+P = P0 * np.exp(r * t)  
 trace = go.Scatter(
     x=t,
     y=P,
@@ -29,7 +25,6 @@ trace = go.Scatter(
     hovertemplate='t: %{x:.2f}<br>P(t): %{y:.2f}<extra></extra>'
 )
 
-# Crear la figura
 fig = go.Figure(data=trace)
 
 fig.update_layout(
@@ -66,12 +61,10 @@ fig.update_yaxes(
     showline=True, linecolor='black', linewidth=2, mirror=True,
 )
 
-##################################################
 
 dash.register_page(__name__, path='/pagina1', name='Pagina 1')
 
 layout = html.Div(children=[
-    # Contendedor izquierdo
     html.Div(children=[
         html.H2("Crecimiento de la población y capacidad de carga", className="title"),
 
@@ -98,7 +91,6 @@ layout = html.Div(children=[
     """, mathjax=True),
     ], className="content left"),
 
-    # Contendor derecho
     html.Div(children=[
         html.H2("Gráfica", className="title"),
 

@@ -67,7 +67,7 @@ fig.update_yaxes(
 
 
 
-dash.register_page(__name__, path='/pagina2', name='Pagina 2')
+dash.register_page(__name__, path='/pagina2', name='Pagina 2', order=3)
 
 layout = html.Div(children=[
     html.Div(children=[

@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objs as go
 from scipy.integrate import odeint
 
-dash.register_page(__name__, path='/pagina7', name='Modelo SEIR')
+dash.register_page(__name__, path='/pagina7', name='Modelo SEIR',order=9)
 
 layout = html.Div([
     html.Div([
